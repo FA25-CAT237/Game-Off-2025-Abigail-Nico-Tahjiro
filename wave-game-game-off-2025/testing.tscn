@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxk2hro8okmpo"]
+
+[ext_resource type="Texture2D" uid="uid://ekj6vcsmy2vg" path="res://Art/grass.png" id="1_qrja6"]
+[ext_resource type="PackedScene" uid="uid://cm2dnqesncqla" path="res://player.tscn" id="2_co24e"]
+
+[node name="Testing" type="Node2D"]
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -5
+texture = ExtResource("1_qrja6")
+
+[node name="Player" parent="." instance=ExtResource("2_co24e")]
+move_speed = 500.0
