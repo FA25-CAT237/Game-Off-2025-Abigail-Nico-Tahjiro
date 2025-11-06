@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cm2dnqesncqla"]
+[gd_scene load_steps=12 format=3 uid="uid://cm2dnqesncqla"]
 
 [ext_resource type="Script" uid="uid://mfjkxhsw7m0t" path="res://player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://cg4hsr7bdi5ia" path="res://Art/blankpiece.png" id="1_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://c21l2now0qjlb" path="res://Art/playerPlaceholder.png" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://cpga4ddoo0b60" path="res://Scripts/hand.gd" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cjpmevf8j2q6d" path="res://Art/plyrAttackPlaceholder.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://cw12vay6nmibv" path="res://Art/redpiece.png" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://4v275k6cciod" path="res://waving.gd" id="5_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://cun5w82tga751" path="res://SFX/Correct.mp3" id="6_1jxqw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jxqw"]
+radius = 81.0
+height = 264.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
 size = Vector2(122, 225)
@@ -23,7 +28,19 @@ script = ExtResource("1_hqtel")
 
 [node name="PlayerBody" type="Sprite2D" parent="."]
 z_index = 2
-texture = ExtResource("1_i3pqv")
+texture = ExtResource("2_2hs0m")
+
+[node name="PlayerAttack" type="Sprite2D" parent="PlayerBody" groups=["attack"]]
+visible = false
+position = Vector2(144, 11)
+texture = ExtResource("3_1jxqw")
+
+[node name="PlayerAttackArea" type="Area2D" parent="PlayerBody/PlayerAttack" groups=["attack"]]
+
+[node name="PlayerAttackHitbox" type="CollisionShape2D" parent="PlayerBody/PlayerAttack/PlayerAttackArea"]
+position = Vector2(-43, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1jxqw")
 
 [node name="PlayerBodyCollision" type="CollisionShape2D" parent="."]
 z_index = 3
