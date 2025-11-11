@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mfjkxhsw7m0t" path="res://Scripts/player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://c21l2now0qjlb" path="res://Art/playerPlaceholder.png" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://cpga4ddoo0b60" path="res://Scripts/hand.gd" id="2_hqtel"]
-[ext_resource type="Texture2D" uid="uid://cw12vay6nmibv" path="res://Art/redpiece.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://cjh8y4np21rp6" path="res://Art/1920 x 2080 Hand.png" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://4v275k6cciod" path="res://Scripts/waving.gd" id="5_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://cun5w82tga751" path="res://SFX/Correct.mp3" id="6_1jxqw"]
 
@@ -59,12 +59,14 @@ script = ExtResource("2_hqtel")
 
 [node name="Line2D" type="Line2D" parent="HandPivot"]
 points = PackedVector2Array(0, 0, 200, 0)
+default_color = Color(0, 0, 0, 1)
 
 [node name="Hand" type="Sprite2D" parent="HandPivot" groups=["Hand"]]
 z_index = 1
-position = Vector2(300, 0)
+position = Vector2(180, 15.000008)
 rotation = 1.5707964
-texture = ExtResource("3_sweqy")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_2hs0m")
 script = ExtResource("5_2hs0m")
 
 [node name="WaveDing" type="AudioStreamPlayer2D" parent="HandPivot/Hand"]
@@ -74,7 +76,7 @@ stream = ExtResource("6_1jxqw")
 [node name="HandArea" type="Area2D" parent="HandPivot/Hand" groups=["Hand"]]
 
 [node name="HandCollider" type="CollisionShape2D" parent="HandPivot/Hand/HandArea" groups=["Hand"]]
-position = Vector2(1.5000131, 1.5)
+position = Vector2(-79.99997, -140)
 shape = SubResource("RectangleShape2D_dw050")
 
 [connection signal="area_entered" from="WaveLeftArea" to="HandPivot/Hand" method="_on_wave_left_area_area_entered"]
