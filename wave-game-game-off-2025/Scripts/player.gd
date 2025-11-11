@@ -11,6 +11,9 @@ var attackInstantiater
 
 func _ready() -> void:
 	attackInstantiater = preload("res://player_attack.tscn")
+	
+	# for testing
+	GameHandler.startWave()
 
 # movement
 func _physics_process(delta: float) -> void:

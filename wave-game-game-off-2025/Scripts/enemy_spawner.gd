@@ -19,7 +19,7 @@ func _ready() -> void:
 	basePosition = self.position
 	
 	# for testing
-	spawnEnemies(3)
+	#spawnEnemies(3)
 
 func spawnEnemies(howMany: int):
 	for int in howMany:

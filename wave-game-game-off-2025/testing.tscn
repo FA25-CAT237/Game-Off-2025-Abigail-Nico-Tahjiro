@@ -32,3 +32,9 @@ position = Vector2(1000, 0)
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("4_kj3p2")]
 position = Vector2(-1000, 0)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("4_kj3p2")]
+position = Vector2(0, 1000)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("4_kj3p2")]
+position = Vector2(0, -1000)
