@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg1mj2ypy3ncl"]
 
 [ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="1_ghv5c"]
-[ext_resource type="Script" uid="uid://ba2ymw20aod7d" path="res://test_enemy.gd" id="1_yikbh"]
+[ext_resource type="Script" uid="uid://ba2ymw20aod7d" path="res://Scripts/test_enemy.gd" id="1_yikbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yikbh"]
 size = Vector2(10, 10)
@@ -23,3 +23,10 @@ shape = SubResource("RectangleShape2D_yikbh")
 
 [node name="TestEnemyHitbox" type="CollisionShape2D" parent="TestEnemyArea" groups=["enemy"]]
 shape = SubResource("CircleShape2D_yikbh")
+
+[node name="ClippingCheck" type="Area2D" parent="." groups=["clippingcheck"]]
+
+[node name="TestEnemyBodyCollision" type="CollisionShape2D" parent="ClippingCheck" groups=["enemy"]]
+shape = SubResource("RectangleShape2D_yikbh")
+
+[connection signal="area_entered" from="ClippingCheck" to="." method="_on_clipping_check_area_entered"]

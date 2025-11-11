@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mfjkxhsw7m0t" path="res://Scripts/player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://c21l2now0qjlb" path="res://Art/playerPlaceholder.png" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://cpga4ddoo0b60" path="res://Scripts/hand.gd" id="2_hqtel"]
-[ext_resource type="Texture2D" uid="uid://cjh8y4np21rp6" path="res://Art/1920 x 2080 Hand.png" id="4_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://bxc85apersjot" path="res://Art/Untitled_Artwork-1.png" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://4v275k6cciod" path="res://Scripts/waving.gd" id="5_2hs0m"]
 [ext_resource type="AudioStream" uid="uid://cun5w82tga751" path="res://SFX/Correct.mp3" id="6_1jxqw"]
 
@@ -67,6 +67,7 @@ position = Vector2(180, 15.000008)
 rotation = 1.5707964
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_2hs0m")
+offset = Vector2(-90, -350)
 script = ExtResource("5_2hs0m")
 
 [node name="WaveDing" type="AudioStreamPlayer2D" parent="HandPivot/Hand"]

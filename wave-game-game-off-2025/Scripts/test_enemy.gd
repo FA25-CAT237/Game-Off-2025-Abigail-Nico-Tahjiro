@@ -9,18 +9,20 @@ var currentPosition : Vector2 #= self.position # reference to past currentPositi
 var movementGate = false # to make movement on a clock that isn't physics process based
 var colliderGate = false
 
+
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
-	currentPosition = self.position
+	#self.global_position = get_parent().global_position # to make it spawn at the enemy spawner
+	currentPosition = self.global_position
 
 func _physics_process(delta: float) -> void:
 	# lock movement gate and set current position if it's false
 	if movementGate == false:
 		movementGate = true
-		currentPosition = self.position
+		currentPosition = self.global_position
 	# move towards the player until a certain distance away from last currentPosition 
-	if(position.distance_to(currentPosition) < 50):
-		if position.distance_to(player.position) > 100:
+	if(global_position.distance_to(currentPosition) < 50):
+		if global_position.distance_to(player.position) > 100:
 			moveTowardsPlayer()
 	else:
 		await get_tree().create_timer(1).timeout
@@ -33,9 +35,9 @@ func _physics_process(delta: float) -> void:
 
 # moveTowardsPlayer makes the enemy move towards the player
 func moveTowardsPlayer() -> void:
-	if(position.distance_to(currentPosition) < 50): 
+	if(global_position.distance_to(currentPosition) < 50): 
 		# update velocity and then move_and_slide
-		velocity = position.direction_to(player.position) * move_speed
+		velocity = global_position.direction_to(player.position) * move_speed
 		move_and_slide()
 
 # check if its contacting the player, the radio, or an attack
@@ -53,3 +55,9 @@ func checkCollision(collisions) -> void:
 		
 		i = i - 1
 	colliderGate = false
+
+# move if clipping with another enemy
+func _on_clipping_check_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("clippingcheck")):
+		self.position.x = self.position.x + randi_range(-5, 5)
+		self.position.y = self.position.y + randi_range(-5, 5)
