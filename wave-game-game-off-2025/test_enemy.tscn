@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg1mj2ypy3ncl"]
+
+[ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="1_ghv5c"]
+[ext_resource type="Script" uid="uid://ba2ymw20aod7d" path="res://test_enemy.gd" id="1_yikbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yikbh"]
+size = Vector2(10, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
+radius = 85.02353
+
+[node name="TestEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_yikbh")
+
+[node name="TestEnemySprite" type="Sprite2D" parent="." groups=["enemy"]]
+z_index = -1
+texture = ExtResource("1_ghv5c")
+
+[node name="TestEnemyBodyCollision" type="CollisionShape2D" parent="." groups=["enemy"]]
+shape = SubResource("RectangleShape2D_yikbh")
+
+[node name="TestEnemyArea" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="TestEnemyHitbox" type="CollisionShape2D" parent="TestEnemyArea" groups=["enemy"]]
+shape = SubResource("CircleShape2D_yikbh")

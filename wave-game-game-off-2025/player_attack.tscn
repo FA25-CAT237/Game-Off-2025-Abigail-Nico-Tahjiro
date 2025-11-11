@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2yrsfk7tkff"]
+
+[ext_resource type="Texture2D" uid="uid://cjpmevf8j2q6d" path="res://Art/plyrAttackPlaceholder.png" id="1_m5rqh"]
+[ext_resource type="Script" uid="uid://fcilbrrlb4kk" path="res://player_attack.gd" id="1_r8f3e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5rqh"]
+radius = 81.0
+height = 264.0
+
+[node name="PlayerAttack" type="Node2D"]
+script = ExtResource("1_r8f3e")
+
+[node name="PlayerAttackSprite" type="Sprite2D" parent="." groups=["attack"]]
+z_index = 2
+position = Vector2(144, 11)
+texture = ExtResource("1_m5rqh")
+
+[node name="PlayerAttackArea" type="Area2D" parent="PlayerAttackSprite" groups=["attack"]]
+
+[node name="PlayerAttackHitbox" type="CollisionShape2D" parent="PlayerAttackSprite/PlayerAttackArea"]
+position = Vector2(-43, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_m5rqh")

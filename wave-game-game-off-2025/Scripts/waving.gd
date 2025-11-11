@@ -12,6 +12,8 @@ func _on_wave_left_area_area_entered(area: Area2D) -> void:
 			# wave successfully done
 			$WaveDing.play()
 			currentDirection = "neutral"
+			# send out an attack
+			$"../..".attack()
 
 func _on_wave_right_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hand"):
@@ -22,4 +24,5 @@ func _on_wave_right_area_area_entered(area: Area2D) -> void:
 			# wave successfully done
 			$WaveDing.play()
 			currentDirection = "neutral"
+			# send out an attack
 			$"../..".attack()

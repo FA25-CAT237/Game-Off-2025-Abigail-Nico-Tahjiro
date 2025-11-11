@@ -4,10 +4,13 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 
-var attacking = false
+var attacking = false # so that you cant rapid-spam attacks
+var healthCooldown = false # so that you dont lose health three times in the same second
+
+var attackInstantiater
 
 func _ready() -> void:
-	$PlayerBody/PlayerAttack.hide()
+	attackInstantiater = preload("res://player_attack.tscn")
 
 # movement
 func _physics_process(delta: float) -> void:
@@ -32,8 +35,17 @@ func _physics_process(delta: float) -> void:
 func attack() -> void:
 	if attacking == false:
 		attacking = true
-		#unhide playerattack and then hide it again after a short timer
-		$PlayerBody/PlayerAttack.show()
+		# instantiate an attack
+		var attackInstance = attackInstantiater.instantiate()
+		$PlayerBody.add_child(attackInstance)
 		await get_tree().create_timer(0.25).timeout
-		$PlayerBody/PlayerAttack.hide()
 		attacking = false
+
+# when hit, lose health
+func loseHealth() -> void:
+	if healthCooldown == false:
+		healthCooldown = true
+		print("owchy!") # replace later
+		# make a better signifier of being temporarily invincible later
+		await get_tree().create_timer(2).timeout
+		healthCooldown = false
