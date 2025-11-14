@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cun5w82tga751" path="res://SFX/Correct.mp3" id="6_1jxqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
-size = Vector2(122, 225)
+size = Vector2(122, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jxqw"]
 size = Vector2(102, 205)
@@ -30,7 +30,7 @@ texture = ExtResource("2_2hs0m")
 
 [node name="PlayerBodyCollision" type="CollisionShape2D" parent="." groups=["player"]]
 z_index = 3
-position = Vector2(2, 0.5)
+position = Vector2(2, 83.5)
 shape = SubResource("RectangleShape2D_2hs0m")
 
 [node name="PlayerHurtbox" type="Area2D" parent="." groups=["player"]]
