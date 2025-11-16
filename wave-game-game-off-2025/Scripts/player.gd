@@ -48,7 +48,7 @@ func attack() -> void:
 func loseHealth() -> void:
 	if healthCooldown == false:
 		healthCooldown = true
-		print("owchy!") # replace later
+		GameHandler.drainPlayerHealth() # replace later
 		# make a better signifier of being temporarily invincible later
 		await get_tree().create_timer(2).timeout
 		healthCooldown = false

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs5gi0vftt482"]
+
+[ext_resource type="Script" uid="uid://64naowfbgucw" path="res://player_health.gd" id="1_d7e0w"]
+[ext_resource type="Texture2D" uid="uid://denfurp0ih6uw" path="res://Art/fullheart placeholder.png" id="1_rr4ua"]
+
+[node name="PlayerHealth" type="Node2D"]
+z_index = 999
+script = ExtResource("1_d7e0w")
+
+[node name="HeartOne" type="Sprite2D" parent="."]
+position = Vector2(-897, -480)
+texture = ExtResource("1_rr4ua")
+
+[node name="HeartTwo" type="Sprite2D" parent="."]
+position = Vector2(-797, -480)
+texture = ExtResource("1_rr4ua")
+
+[node name="HeartThree" type="Sprite2D" parent="."]
+position = Vector2(-697, -480)
+texture = ExtResource("1_rr4ua")
