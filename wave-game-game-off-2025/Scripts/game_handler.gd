@@ -7,6 +7,9 @@ var wave = 0
 var playerHealth = 3
 var radioHealth = 100
 
+# variable for current enemy count
+var enemyCount = 0
+
 # function for starting a wave
 func startWave() -> void:
 	wave = wave + 1
@@ -14,6 +17,7 @@ func startWave() -> void:
 	while (i) < get_tree().get_nodes_in_group("spawner").size():
 		get_tree().get_nodes_in_group("spawner")[i].spawnEnemies(wave * 2)
 		i = i + 1
+	enemyCount = get_tree().get_nodes_in_group("enemy").size()
 
 # function for ticking down player health
 func drainPlayerHealth() -> void:
@@ -28,6 +32,7 @@ func getPlayerHealth() -> int:
 # function for ticking down radio health based on a given number
 func drainRadioHealth(healthToDrain: int) -> void:
 	radioHealth = radioHealth - healthToDrain
+	print(radioHealth)
 	if radioHealth <= 0:
 		gameOver()
 
@@ -38,3 +43,8 @@ func getRadioHealth() -> int:
 # function for game over
 func gameOver() -> void:
 	print("oooohhhh you lost") # replace later
+
+# function for setting and returning enemy count
+func getEnemyCount() -> int:
+	enemyCount = get_tree().get_nodes_in_group("enemy").size()
+	return enemyCount

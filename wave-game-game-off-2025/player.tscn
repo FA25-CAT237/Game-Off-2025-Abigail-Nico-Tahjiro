@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cm2dnqesncqla"]
 
 [ext_resource type="Script" uid="uid://mfjkxhsw7m0t" path="res://Scripts/player.gd" id="1_hqtel"]
-[ext_resource type="Texture2D" uid="uid://c21l2now0qjlb" path="res://Art/playerPlaceholder.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://cv3etoeujnnvv" path="res://Art/PlayerBunnySprite.png" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://cpga4ddoo0b60" path="res://Scripts/hand.gd" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cwne1yuc6c83" path="res://Art/Hand.png" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://4v275k6cciod" path="res://Scripts/waving.gd" id="5_2hs0m"]
@@ -80,5 +80,7 @@ stream = ExtResource("6_1jxqw")
 position = Vector2(-79.99997, -140)
 shape = SubResource("RectangleShape2D_dw050")
 
+[connection signal="area_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_entered"]
+[connection signal="area_exited" from="PlayerHurtbox" to="." method="_on_player_hurtbox_area_exited"]
 [connection signal="area_entered" from="WaveLeftArea" to="HandPivot/Hand" method="_on_wave_left_area_area_entered"]
 [connection signal="area_entered" from="WaveRightArea" to="HandPivot/Hand" method="_on_wave_right_area_area_entered"]

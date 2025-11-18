@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://fcilbrrlb4kk" path="res://Scripts/player_attack.gd" id="1_r8f3e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5rqh"]
-radius = 81.0
-height = 264.0
+radius = 92.0
+height = 292.0
 
 [node name="PlayerAttack" type="Node2D"]
 script = ExtResource("1_r8f3e")

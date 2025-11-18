@@ -2,6 +2,7 @@ extends Node2D
 
 # preload all the enemy types
 var testEnemy
+var testEnemy2
 
 var enemySpawn
 
@@ -15,6 +16,7 @@ var basePosition
 func _ready() -> void:
 	# preload all the enemy types
 	testEnemy = preload("res://test_enemy.tscn")
+	testEnemy2 = preload("res://test_enemy_2.tscn")
 	
 	basePosition = self.position
 	
@@ -31,8 +33,11 @@ func spawnEnemies(howMany: int):
 		# generate a number for what enemy will be spawned
 		enemySpawnChance = rng.randi_range(0, 100)
 		# randomly choose which enemies to spawn based on the wave
-		if enemySpawnChance <= 100:
+		if enemySpawnChance <= 50:
 			var enemySpawn = testEnemy.instantiate()
+			add_child(enemySpawn)
+		else:
+			var enemySpawn = testEnemy2.instantiate()
 			add_child(enemySpawn)
 		self.position = basePosition
 	pass

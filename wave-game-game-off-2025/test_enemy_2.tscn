@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5oqdf2lkk7ew"]
+
+[ext_resource type="Script" uid="uid://d1p48vltm0gh3" path="res://test_enemy_2.gd" id="1_nel0a"]
+[ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="2_piugq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yikbh"]
+size = Vector2(10, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
+radius = 85.02353
+
+[node name="TestEnemy2" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_nel0a")
+
+[node name="TestEnemy2Sprite" type="Sprite2D" parent="." groups=["enemy"]]
+z_index = -1
+rotation = 3.1415927
+texture = ExtResource("2_piugq")
+
+[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="." groups=["enemy"]]
+shape = SubResource("RectangleShape2D_yikbh")
+
+[node name="TestEnemy2Area" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="TestEnemy2Hitbox" type="CollisionShape2D" parent="TestEnemy2Area" groups=["enemy"]]
+shape = SubResource("CircleShape2D_yikbh")
+
+[node name="ClippingCheck" type="Area2D" parent="." groups=["clippingcheck"]]
+
+[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="ClippingCheck" groups=["enemy"]]
+shape = SubResource("RectangleShape2D_yikbh")
+
+[connection signal="area_entered" from="ClippingCheck" to="." method="_on_clipping_check_area_entered"]

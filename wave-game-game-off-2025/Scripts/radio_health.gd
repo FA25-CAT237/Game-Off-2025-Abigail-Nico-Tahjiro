@@ -6,12 +6,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# change heart sprites to reflect player's health
+	# change sprite to reflect radio's health
+	if(GameHandler.getRadioHealth() <= 75):
+		$RadioHealthBar.texture = load("res://Art/RadioHealth100.png")
 	if(GameHandler.getRadioHealth() <= 75):
 		$RadioHealthBar.texture = load("res://Art/RadioHealth75.png")
-	if(GameHandler.getPlayerHealth() <= 50):
+	if(GameHandler.getRadioHealth() <= 50):
 		$RadioHealthBar.texture = load("res://Art/RadioHealth50.png")
-	if(GameHandler.getPlayerHealth() <= 25):
+	if(GameHandler.getRadioHealth() <= 25):
 		$RadioHealthBar.texture = load("res://Art/RadioHealth25.png")
-	if(GameHandler.getPlayerHealth() <= 0):
+	if(GameHandler.getRadioHealth() <= 0):
 		$RadioHealthBar.texture = load("res://Art/RadioHealth0.png")

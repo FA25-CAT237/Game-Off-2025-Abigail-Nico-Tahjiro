@@ -1,5 +1,5 @@
 extends CharacterBody2D
-# Test Enemy 1 targets the player.
+# Test Enemy 2 targets the radio.
 
 @export var move_speed : float = 250 # how fast the enemy moves
 
@@ -25,24 +25,24 @@ func _physics_process(delta: float) -> void:
 	if movementGate == false:
 		movementGate = true
 		currentPosition = self.global_position
-	# move towards the player until a certain distance away from last currentPosition 
+	# move towards the radio until a certain distance away from last currentPosition 
 	if(global_position.distance_to(currentPosition) < 50):
-		if global_position.distance_to(player.position) > 100:
-			moveTowardsPlayer()
+		if global_position.distance_to(radio.position) > 100:
+			moveTowardsRadio()
 	else:
 		await get_tree().create_timer(1).timeout
 		movementGate = false
 	
 	# check for collision
-	if $TestEnemyArea.get_overlapping_areas().size() > 0 && colliderGate == false:
+	if $TestEnemy2Area.get_overlapping_areas().size() > 0 && colliderGate == false:
 		colliderGate = true
-		checkCollision($TestEnemyArea.get_overlapping_areas())
+		checkCollision($TestEnemy2Area.get_overlapping_areas())
 
-# moveTowardsPlayer makes the enemy move towards the player
-func moveTowardsPlayer() -> void:
+# moveTowardsRadio makes the enemy move towards the radio
+func moveTowardsRadio() -> void:
 	if(global_position.distance_to(currentPosition) < 50): 
 		# update velocity and then move_and_slide
-		velocity = global_position.direction_to(player.position) * move_speed
+		velocity = global_position.direction_to(radio.position) * move_speed
 		move_and_slide()
 
 # check if its contacting the player, the radio, or an attack
@@ -51,7 +51,7 @@ func checkCollision(collisions) -> void:
 	while i > 0:
 		# check if it's the player
 		if(collisions[i - 1].is_in_group("player")):
-			player.loseHealth() # we already have a direct reference to the player
+			player.loseHealth()
 		# check if it's an attack from the player
 		if(collisions[i - 1].is_in_group("attack")):
 			print("dead enemy")
