@@ -49,20 +49,21 @@ func moveTowardsRadio() -> void:
 func checkCollision(collisions) -> void:
 	var i = collisions.size()
 	while i > 0:
-		# check if it's the player
-		if(collisions[i - 1].is_in_group("player")):
-			player.loseHealth()
-		# check if it's an attack from the player
-		if(collisions[i - 1].is_in_group("attack")):
-			print("dead enemy")
-			queue_free() # die. could be improved upon later
-		# check if it's the radio
-		if(collisions[i - 1].is_in_group("radio")):
-			if radioAttackCooldown == false:
-				radioAttackCooldown = true
-				radio.loseHealth(radioDamage)
-				await get_tree().create_timer(2).timeout
-				radioAttackCooldown = false
+		if(collisions[i - 1] != null): # to be safe
+			# check if it's the player
+			if(collisions[i - 1].is_in_group("player")):
+				player.loseHealth()
+			# check if it's an attack from the player
+			if(collisions[i - 1].is_in_group("attack")):
+				print("dead enemy")
+				queue_free() # die. could be improved upon later
+			# check if it's the radio
+			if(collisions[i - 1].is_in_group("radio")):
+				if radioAttackCooldown == false:
+					radioAttackCooldown = true
+					radio.loseHealth(radioDamage)
+					await get_tree().create_timer(2).timeout
+					radioAttackCooldown = false
 		
 		i = i - 1
 	colliderGate = false

@@ -15,9 +15,6 @@ var touchingRadio = false
 func _ready() -> void:
 	attackInstantiater = preload("res://player_attack.tscn")
 	radio = get_tree().get_nodes_in_group("radio")[0]
-	
-	# for testing
-	GameHandler.startWave()
 
 # movement
 func _physics_process(delta: float) -> void:
@@ -33,7 +30,8 @@ func _physics_process(delta: float) -> void:
 		$PlayerBody.scale.x = -1
 	
 	if(Input.is_action_just_released("interact") && touchingRadio == true):
-		print("this is where we'll make the next wave start if the last one ended")
+		if GameHandler.getEnemyCount() == 0:
+			GameHandler.startWave() # REPLACE WITH THE UPGRADE THING LATER
 	
 	# Update velocity
 	velocity = input_direction * move_speed

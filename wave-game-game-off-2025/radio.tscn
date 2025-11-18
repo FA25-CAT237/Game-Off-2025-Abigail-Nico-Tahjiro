@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://btxwasiuyjqng"]
+[gd_scene load_steps=5 format=3 uid="uid://btxwasiuyjqng"]
 
-[ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="1_flxc7"]
+[ext_resource type="Texture2D" uid="uid://d3j85rn81eah5" path="res://Art/Radio.png" id="1_543sh"]
 [ext_resource type="Script" uid="uid://dx818vs1cpjty" path="res://Scripts/radio.gd" id="2_543sh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_543sh"]
-radius = 67.89698
+radius = 71.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_543sh"]
+size = Vector2(130, 127)
 
 [node name="Radio" type="Sprite2D" groups=["radio"]]
-z_index = -2
-rotation = 1.5707964
-texture = ExtResource("1_flxc7")
+z_index = -1
+texture = ExtResource("1_543sh")
 script = ExtResource("2_543sh")
 
 [node name="RadioHurtbox" type="Area2D" parent="." groups=["radio"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RadioHurtbox" groups=["radio"]]
 shape = SubResource("CircleShape2D_543sh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="RadioCollision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 32.5)
+shape = SubResource("RectangleShape2D_543sh")

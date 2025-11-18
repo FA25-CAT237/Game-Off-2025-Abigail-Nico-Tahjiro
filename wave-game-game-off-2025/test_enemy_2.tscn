@@ -9,25 +9,25 @@ size = Vector2(10, 10)
 [sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
 radius = 85.02353
 
-[node name="TestEnemy2" type="CharacterBody2D" groups=["enemy"]]
+[node name="TestEnemy2" type="CharacterBody2D"]
 script = ExtResource("1_nel0a")
 
-[node name="TestEnemy2Sprite" type="Sprite2D" parent="." groups=["enemy"]]
+[node name="TestEnemy2Sprite" type="Sprite2D" parent="."]
 z_index = -1
 rotation = 3.1415927
 texture = ExtResource("2_piugq")
 
-[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="." groups=["enemy"]]
+[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yikbh")
 
 [node name="TestEnemy2Area" type="Area2D" parent="." groups=["enemy"]]
 
-[node name="TestEnemy2Hitbox" type="CollisionShape2D" parent="TestEnemy2Area" groups=["enemy"]]
+[node name="TestEnemy2Hitbox" type="CollisionShape2D" parent="TestEnemy2Area"]
 shape = SubResource("CircleShape2D_yikbh")
 
 [node name="ClippingCheck" type="Area2D" parent="." groups=["clippingcheck"]]
 
-[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="ClippingCheck" groups=["enemy"]]
+[node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="ClippingCheck"]
 shape = SubResource("RectangleShape2D_yikbh")
 
 [connection signal="area_entered" from="ClippingCheck" to="." method="_on_clipping_check_area_entered"]
