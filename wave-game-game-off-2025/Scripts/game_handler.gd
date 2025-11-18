@@ -55,3 +55,7 @@ func gameFinished() -> void:
 func getEnemyCount() -> int:
 	enemyCount = get_tree().get_nodes_in_group("enemy").size()
 	return enemyCount
+
+# function for getting wave number
+func getWaveNumber() -> int:
+	return wave

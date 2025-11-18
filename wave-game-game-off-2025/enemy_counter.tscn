@@ -14,9 +14,9 @@ script = ExtResource("1_dl1g6")
 [node name="EnemyCountLabel" type="Label" parent="."]
 z_index = 999
 layout_mode = 0
-offset_left = 445.0
+offset_left = 420.0
 offset_top = 401.0
-offset_right = 927.0
+offset_right = 902.0
 offset_bottom = 489.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 64
