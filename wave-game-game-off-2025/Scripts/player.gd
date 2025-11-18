@@ -7,13 +7,15 @@ extends CharacterBody2D
 var attacking = false # so that you cant rapid-spam attacks
 var healthCooldown = false # so that you dont lose health three times in the same second
 
-var attackInstantiater
+var attackInstantiater # reference to attack
+@onready var waveBannerInstantiater # reference to wave banner
 
 @onready var radio  # reference to radio's position
 var touchingRadio = false
 
 func _ready() -> void:
 	attackInstantiater = preload("res://player_attack.tscn")
+	waveBannerInstantiater = preload("res://wave_banner.tscn")
 	radio = get_tree().get_nodes_in_group("radio")[0]
 
 # movement
@@ -31,7 +33,8 @@ func _physics_process(delta: float) -> void:
 	
 	if(Input.is_action_just_released("interact") && touchingRadio == true):
 		if GameHandler.getEnemyCount() == 0:
-			GameHandler.startWave() # REPLACE WITH THE UPGRADE THING LATER
+			var bannerInstance = waveBannerInstantiater.instantiate()
+			add_child(bannerInstance) # REPLACE WITH THE UPGRADE THING LATER
 	
 	# Update velocity
 	velocity = input_direction * move_speed

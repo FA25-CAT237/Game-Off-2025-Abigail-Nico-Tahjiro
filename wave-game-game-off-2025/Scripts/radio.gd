@@ -4,6 +4,7 @@ var healthCooldown = false
 
 @onready var player # reference to player character's position
 
+
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
 
