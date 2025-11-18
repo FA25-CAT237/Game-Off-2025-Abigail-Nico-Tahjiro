@@ -9,6 +9,8 @@ var currentPosition : Vector2 #= self.position # reference to past currentPositi
 var movementGate = false # to make movement on a clock that isn't physics process based
 var colliderGate = false
 
+var radioDamage = 1 # how much it hurts the radio
+var radioAttackCooldown # radio damage cooldowns should be on the enemy side
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
@@ -51,7 +53,9 @@ func checkCollision(collisions) -> void:
 		if(collisions[i - 1].is_in_group("attack")):
 			print("dead enemy")
 			queue_free() # die. could be improved upon later
-		# add one for the radio too
+		# check if it's the radio
+		if(collisions[i - 1].is_in_group("radio")):
+			collisions[i - 1].loseHealth(radioDamage)
 		
 		i = i - 1
 	colliderGate = false

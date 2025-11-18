@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://cxk2hro8okmpo"]
+[gd_scene load_steps=9 format=4 uid="uid://cxk2hro8okmpo"]
 
 [ext_resource type="PackedScene" uid="uid://cm2dnqesncqla" path="res://player.tscn" id="2_co24e"]
 [ext_resource type="Texture2D" uid="uid://c6s287664t4my" path="res://Art/sandtile.png" id="3_feb8i"]
 [ext_resource type="PackedScene" uid="uid://bs5gi0vftt482" path="res://player_health.tscn" id="3_kj3p2"]
+[ext_resource type="PackedScene" uid="uid://cr2t6hbbtqmwk" path="res://radio_health.tscn" id="4_jn4p2"]
 [ext_resource type="PackedScene" uid="uid://bud8135d0bdjk" path="res://enemy_spawner.tscn" id="4_kj3p2"]
+[ext_resource type="PackedScene" uid="uid://btxwasiuyjqng" path="res://radio.tscn" id="5_lc7k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kj3p2"]
 texture = ExtResource("3_feb8i")
@@ -31,6 +33,8 @@ move_speed = 500.0
 
 [node name="PlayerHealth" parent="Player" instance=ExtResource("3_kj3p2")]
 
+[node name="RadioHealth" parent="Player" instance=ExtResource("4_jn4p2")]
+
 [node name="EnemySpawner" parent="." instance=ExtResource("4_kj3p2")]
 position = Vector2(2246, -25)
 
@@ -42,3 +46,5 @@ position = Vector2(54, 1441)
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("4_kj3p2")]
 position = Vector2(73, -1601)
+
+[node name="Radio" parent="." instance=ExtResource("5_lc7k4")]

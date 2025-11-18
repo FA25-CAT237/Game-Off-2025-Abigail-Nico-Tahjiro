@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://btxwasiuyjqng"]
+
+[ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="1_flxc7"]
+[ext_resource type="Script" uid="uid://dx818vs1cpjty" path="res://Scripts/radio.gd" id="2_543sh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_543sh"]
+radius = 67.89698
+
+[node name="Radio" type="Sprite2D" groups=["radio"]]
+z_index = -2
+rotation = 1.5707964
+texture = ExtResource("1_flxc7")
+script = ExtResource("2_543sh")
+
+[node name="RadioHurtbox" type="Area2D" parent="." groups=["radio"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioHurtbox" groups=["radio"]]
+shape = SubResource("CircleShape2D_543sh")

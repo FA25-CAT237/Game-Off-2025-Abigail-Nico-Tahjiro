@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs5gi0vftt482"]
 
-[ext_resource type="Script" uid="uid://64naowfbgucw" path="res://player_health.gd" id="1_d7e0w"]
+[ext_resource type="Script" uid="uid://64naowfbgucw" path="res://Scripts/player_health.gd" id="1_d7e0w"]
 [ext_resource type="Texture2D" uid="uid://denfurp0ih6uw" path="res://Art/fullheart placeholder.png" id="1_rr4ua"]
 
 [node name="PlayerHealth" type="Node2D"]
