@@ -7,5 +7,5 @@
 script = ExtResource("1_0cg27")
 
 [node name="RadioHealthBar" type="Sprite2D" parent="."]
-position = Vector2(-702, 345)
+position = Vector2(-768, 429)
 texture = ExtResource("1_bp33x")

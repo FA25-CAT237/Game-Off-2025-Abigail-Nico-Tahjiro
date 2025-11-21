@@ -10,6 +10,9 @@ var radioHealth = 100
 # variable for current enemy count
 var enemyCount = 0
 
+# game over
+var gameIsOver = false
+
 # function for starting a wave
 func startWave() -> void:
 	wave = wave + 1
@@ -45,7 +48,14 @@ func getRadioHealth() -> int:
 
 # function for game over
 func gameOver() -> void:
-	print("oooohhhh you lost") # replace later
+	gameIsOver = true
+
+# function for resetting game
+func gameReset() -> void:
+	wave = 0
+	gameIsOver = false
+	playerHealth = 3
+	radioHealth = 100
 
 # function for game won
 func gameFinished() -> void:

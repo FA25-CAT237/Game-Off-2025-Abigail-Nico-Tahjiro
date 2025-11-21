@@ -13,6 +13,8 @@ var attackInstantiater # reference to attack
 @onready var radio  # reference to radio's position
 var touchingRadio = false
 
+var gameOverBannerSent = false
+
 func _ready() -> void:
 	attackInstantiater = preload("res://player_attack.tscn")
 	waveBannerInstantiater = preload("res://wave_banner.tscn")
@@ -20,27 +22,32 @@ func _ready() -> void:
 
 # movement
 func _physics_process(delta: float) -> void:
-	# Get the input direction
-	var input_direction = Vector2(
-		Input.get_action_strength("moveRight") - Input.get_action_strength("moveLeft"),
-		Input.get_action_strength("moveDown") - Input.get_action_strength("moveUp"))
-	
-	# Move sprite based on input direction
-	if(Input.get_action_strength("moveRight") > Input.get_action_strength("moveLeft")):
-		$PlayerBody.scale.x = 1
-	else: if(Input.get_action_strength("moveRight") < Input.get_action_strength("moveLeft")):
-		$PlayerBody.scale.x = -1
-	
-	if(Input.is_action_just_released("interact") && touchingRadio == true):
-		if GameHandler.getEnemyCount() == 0:
-			var bannerInstance = waveBannerInstantiater.instantiate()
-			add_child(bannerInstance) # REPLACE WITH THE UPGRADE THING LATER
-	
-	# Update velocity
-	velocity = input_direction * move_speed
-	
-	# Move and slide function moves character on map
-	move_and_slide()
+	if(GameHandler.gameIsOver == false):
+		# Get the input direction
+		var input_direction = Vector2(
+			Input.get_action_strength("moveRight") - Input.get_action_strength("moveLeft"),
+			Input.get_action_strength("moveDown") - Input.get_action_strength("moveUp"))
+		
+		# Move sprite based on input direction
+		if(Input.get_action_strength("moveRight") > Input.get_action_strength("moveLeft")):
+			$PlayerBody.scale.x = 1
+		else: if(Input.get_action_strength("moveRight") < Input.get_action_strength("moveLeft")):
+			$PlayerBody.scale.x = -1
+		
+		if(Input.is_action_just_released("interact") && touchingRadio == true):
+			if GameHandler.getEnemyCount() == 0:
+				var bannerInstance = waveBannerInstantiater.instantiate()
+				add_child(bannerInstance) # REPLACE WITH THE UPGRADE THING LATER
+		
+		# Update velocity
+		velocity = input_direction * move_speed
+		
+		# Move and slide function moves character on map
+		move_and_slide()
+	if GameHandler.gameIsOver == true && gameOverBannerSent == false:
+		gameOverBannerSent = true
+		var bannerInstance = waveBannerInstantiater.instantiate()
+		add_child(bannerInstance)
 
 # when an attack is done, summon the attack hitbox
 func attack() -> void:

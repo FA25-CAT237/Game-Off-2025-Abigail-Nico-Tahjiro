@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d35brlfl7o3ng"]
 
-[ext_resource type="Script" uid="uid://cfhrsnf1uyv3j" path="res://wave_banner.gd" id="1_6hmvs"]
+[ext_resource type="Script" uid="uid://cfhrsnf1uyv3j" path="res://Scripts/wave_banner.gd" id="1_6hmvs"]
 [ext_resource type="Texture2D" uid="uid://v3hv275n16k1" path="res://Art/wave1banner.png" id="1_n6ybi"]
 
 [node name="WaveBanner" type="Node2D"]
