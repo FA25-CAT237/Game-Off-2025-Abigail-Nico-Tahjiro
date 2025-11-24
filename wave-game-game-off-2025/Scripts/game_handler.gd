@@ -59,7 +59,7 @@ func gameReset() -> void:
 
 # function for game won
 func gameFinished() -> void:
-	print ("oh yay you won!") # replace later
+	get_tree().change_scene_to_file("res://game_won.tscn")
 
 # function for setting and returning enemy count
 func getEnemyCount() -> int:

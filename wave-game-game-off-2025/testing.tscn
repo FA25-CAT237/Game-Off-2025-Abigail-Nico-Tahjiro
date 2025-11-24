@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cxk2hro8okmpo"]
+[gd_scene load_steps=27 format=4 uid="uid://cxk2hro8okmpo"]
 
 [ext_resource type="Script" uid="uid://c8eoyom4dn14h" path="res://Scripts/environment.gd" id="1_n3efn"]
 [ext_resource type="PackedScene" uid="uid://cm2dnqesncqla" path="res://player.tscn" id="2_co24e"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cu8duus0swvd0" path="res://Art/WaveFile_007.png" id="10_s87iw"]
 [ext_resource type="Texture2D" uid="uid://bwht3r5kcx0u7" path="res://Art/WaveFile_009.png" id="11_ri61t"]
 [ext_resource type="Texture2D" uid="uid://cvraya4yca4q5" path="res://Art/WaveFile_010.png" id="12_h15u1"]
+[ext_resource type="PackedScene" uid="uid://d2ilvdf68cdpe" path="res://tutorial.tscn" id="18_yxtlv"]
+[ext_resource type="AudioStream" uid="uid://b7veikf3jwc4t" path="res://SFX/wavybeach.mp3" id="21_5hair"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kj3p2"]
 texture = ExtResource("3_feb8i")
@@ -126,6 +128,10 @@ move_speed = 500.0
 
 [node name="EnemyCounter" parent="Player" instance=ExtResource("5_ybq6y")]
 
+[node name="Tutorial" parent="Player" instance=ExtResource("18_yxtlv")]
+z_index = 1000
+position = Vector2(0, -250)
+
 [node name="EnemySpawner" parent="." instance=ExtResource("4_kj3p2")]
 position = Vector2(2246, -25)
 
@@ -139,3 +145,9 @@ position = Vector2(54, 1441)
 position = Vector2(73, -1601)
 
 [node name="Radio" parent="." instance=ExtResource("5_lc7k4")]
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="Radio"]
+stream = ExtResource("21_5hair")
+volume_db = -4.0
+autoplay = true
+max_distance = 4000.0

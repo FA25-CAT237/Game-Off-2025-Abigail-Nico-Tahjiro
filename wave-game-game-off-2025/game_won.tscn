@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5al4c17u6g28"]
+
+[ext_resource type="Texture2D" uid="uid://b0il3nvcrxo20" path="res://Art/game win screen.png" id="1_glrca"]
+
+[node name="GameWon" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GameWonSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_glrca")

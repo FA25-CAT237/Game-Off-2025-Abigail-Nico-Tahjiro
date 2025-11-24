@@ -33,6 +33,18 @@ func _physics_process(delta: float) -> void:
 		await get_tree().create_timer(1).timeout
 		movementGate = false
 	
+	# flip depending on direction
+	if (radio.global_position.x < self.global_position.x):
+		$TestEnemy2Sprite.scale.x = 1
+	else:
+		$TestEnemy2Sprite.scale.x = -1
+	
+	# animate if moving
+	if velocity != Vector2(0, 0) && $TestEnemy2Sprite != null:
+		$TestEnemy2Sprite.play("move")
+	else: if($TestEnemy2Sprite != null):
+		$TestEnemy2Sprite.play("idle")
+	
 	# check for collision
 	if $TestEnemy2Area.get_overlapping_areas().size() > 0 && colliderGate == false:
 		colliderGate = true

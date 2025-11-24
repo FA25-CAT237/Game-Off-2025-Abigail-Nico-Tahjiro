@@ -33,6 +33,11 @@ func _physics_process(delta: float) -> void:
 			$PlayerBody.scale.x = 1
 		else: if(Input.get_action_strength("moveRight") < Input.get_action_strength("moveLeft")):
 			$PlayerBody.scale.x = -1
+		# animate sprite while moving
+		if(input_direction != Vector2(0, 0)):
+			$PlayerBody.play("run")
+		else:
+			$PlayerBody.play("idle")
 		
 		if(Input.is_action_just_released("interact") && touchingRadio == true):
 			if GameHandler.getEnemyCount() == 0:

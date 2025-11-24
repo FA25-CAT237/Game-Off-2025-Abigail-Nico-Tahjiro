@@ -12,7 +12,8 @@ func _ready() -> void:
 		$WaveBannerSprite.texture = load("res://Art/wave4banner.png")
 	if(GameHandler.gameIsOver == true):
 		$WaveBannerSprite.texture = load("res://Art/gameoverbanner.png")
-	moveBy()
+	if(GameHandler.getWaveNumber() < 5):
+		moveBy()
 
 func moveBy() -> void:
 	while(self.position.x < 0):

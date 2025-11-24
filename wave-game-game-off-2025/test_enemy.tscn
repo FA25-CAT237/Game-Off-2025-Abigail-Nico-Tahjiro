@@ -1,7 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg1mj2ypy3ncl"]
+[gd_scene load_steps=9 format=3 uid="uid://bg1mj2ypy3ncl"]
 
-[ext_resource type="Texture2D" uid="uid://yqwxinekrrme" path="res://Art/icon.svg" id="1_ghv5c"]
 [ext_resource type="Script" uid="uid://ba2ymw20aod7d" path="res://Scripts/test_enemy.gd" id="1_yikbh"]
+[ext_resource type="Texture2D" uid="uid://d0l31mqs4egqk" path="res://Art/Crab Frame 1.png" id="2_jg7vu"]
+[ext_resource type="Texture2D" uid="uid://bb0cf6nopoylt" path="res://Art/Crab Frame 2.png" id="3_4humj"]
+[ext_resource type="Texture2D" uid="uid://bap5ltkx7iyqi" path="res://Art/Crab Frame 3.png" id="4_vpsq7"]
+[ext_resource type="Texture2D" uid="uid://crqttyjiau6me" path="res://Art/Crab Frame 4.png" id="5_m853d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ik78p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jg7vu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vpsq7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jg7vu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4humj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vpsq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m853d")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yikbh"]
 size = Vector2(10, 10)
@@ -12,9 +46,11 @@ radius = 85.02353
 [node name="TestEnemy" type="CharacterBody2D"]
 script = ExtResource("1_yikbh")
 
-[node name="TestEnemySprite" type="Sprite2D" parent="."]
+[node name="TestEnemySprite" type="AnimatedSprite2D" parent="."]
 z_index = -1
-texture = ExtResource("1_ghv5c")
+sprite_frames = SubResource("SpriteFrames_ik78p")
+animation = &"idle"
+frame_progress = 0.9688728
 
 [node name="TestEnemyBodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yikbh")
@@ -22,6 +58,7 @@ shape = SubResource("RectangleShape2D_yikbh")
 [node name="TestEnemyArea" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="TestEnemyHitbox" type="CollisionShape2D" parent="TestEnemyArea"]
+position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_yikbh")
 
 [node name="ClippingCheck" type="Area2D" parent="." groups=["clippingcheck"]]
