@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().create_timer(3).timeout
 		# fire a projectile
 		var projectileInstance = projectileInstantiater.instantiate()
-		projectileInstance.position = position
+		projectileInstance.position = global_position
 		get_tree().root.add_child(projectileInstance)
 		await get_tree().create_timer(1).timeout
 		attacking = false
