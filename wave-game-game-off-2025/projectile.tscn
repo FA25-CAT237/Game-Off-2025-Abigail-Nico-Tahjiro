@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb2ju6ilvmd1e"]
+
+[ext_resource type="Texture2D" uid="uid://44jvof0vgk7a" path="res://Art/projectile.png" id="1_a85iw"]
+[ext_resource type="Script" uid="uid://b1g2gsvseg5aw" path="res://projectile.gd" id="1_qxf0c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a85iw"]
+radius = 21.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qxf0c"]
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_qxf0c")
+
+[node name="ProjectileSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a85iw")
+
+[node name="ProjectileArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileArea2D"]
+shape = SubResource("CapsuleShape2D_a85iw")
+
+[node name="InactiveCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qxf0c")
+disabled = true
+
+[connection signal="area_entered" from="ProjectileArea2D" to="." method="_on_projectile_area_2d_area_entered"]

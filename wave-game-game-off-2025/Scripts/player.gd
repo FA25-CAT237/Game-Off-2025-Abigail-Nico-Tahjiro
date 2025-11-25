@@ -13,6 +13,7 @@ var attackInstantiater # reference to attack
 @onready var radio  # reference to radio's position
 var touchingRadio = false
 
+var waveBannerSent = false
 var gameOverBannerSent = false
 
 func _ready() -> void:
@@ -39,10 +40,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			$PlayerBody.play("idle")
 		
+		# interact with radio to start wave
 		if(Input.is_action_just_released("interact") && touchingRadio == true):
-			if GameHandler.getEnemyCount() == 0:
+			if GameHandler.getEnemyCount() == 0 && waveBannerSent == false:
+				waveBannerSent = true
 				var bannerInstance = waveBannerInstantiater.instantiate()
 				add_child(bannerInstance) # REPLACE WITH THE UPGRADE THING LATER
+		# reset waveBannerSent
+		if GameHandler.getEnemyCount() > 0:
+			waveBannerSent = false
 		
 		# Update velocity
 		velocity = input_direction * move_speed

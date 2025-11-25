@@ -1,5 +1,5 @@
 extends CharacterBody2D
-# Test Enemy 2 targets the radio.
+# Grandma targets the radio but does no real damage.
 
 @export var move_speed : float = 250 # how fast the enemy moves
 
@@ -11,7 +11,7 @@ var currentPosition : Vector2 #= self.position # reference to past currentPositi
 var movementGate = false # to make movement on a clock that isn't physics process based
 var colliderGate = false
 
-var radioDamage = 2 # how much it hurts the radio
+var radioDamage = 0 # how much it hurts the radio
 var radioAttackCooldown = false # radio damage cooldowns should be on the enemy side
 
 func _ready() -> void:
@@ -64,7 +64,7 @@ func checkCollision(collisions) -> void:
 		if(collisions[i - 1] != null): # to be safe
 			# check if it's the player
 			if(collisions[i - 1].is_in_group("player")):
-				player.loseHealth()
+				pass
 			# check if it's an attack from the player
 			if(collisions[i - 1].is_in_group("attack")):
 				print("dead enemy")

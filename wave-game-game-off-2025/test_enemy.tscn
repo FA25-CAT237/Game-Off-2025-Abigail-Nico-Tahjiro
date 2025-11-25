@@ -17,7 +17,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -34,7 +34,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yikbh"]
@@ -49,8 +49,7 @@ script = ExtResource("1_yikbh")
 [node name="TestEnemySprite" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_ik78p")
-animation = &"idle"
-frame_progress = 0.9688728
+animation = &"move"
 
 [node name="TestEnemyBodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yikbh")

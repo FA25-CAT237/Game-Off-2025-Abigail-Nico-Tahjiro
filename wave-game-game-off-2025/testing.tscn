@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cxk2hro8okmpo"]
+[gd_scene load_steps=28 format=4 uid="uid://cxk2hro8okmpo"]
 
 [ext_resource type="Script" uid="uid://c8eoyom4dn14h" path="res://Scripts/environment.gd" id="1_n3efn"]
 [ext_resource type="PackedScene" uid="uid://cm2dnqesncqla" path="res://player.tscn" id="2_co24e"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cvraya4yca4q5" path="res://Art/WaveFile_010.png" id="12_h15u1"]
 [ext_resource type="PackedScene" uid="uid://d2ilvdf68cdpe" path="res://tutorial.tscn" id="18_yxtlv"]
 [ext_resource type="AudioStream" uid="uid://b7veikf3jwc4t" path="res://SFX/wavybeach.mp3" id="21_5hair"]
+[ext_resource type="PackedScene" uid="uid://cia8bybivl8ix" path="res://grandma.tscn" id="22_nrmhc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kj3p2"]
 texture = ExtResource("3_feb8i")
@@ -151,3 +152,6 @@ stream = ExtResource("21_5hair")
 volume_db = -4.0
 autoplay = true
 max_distance = 4000.0
+
+[node name="Grandma" parent="." instance=ExtResource("22_nrmhc")]
+position = Vector2(539, -88)

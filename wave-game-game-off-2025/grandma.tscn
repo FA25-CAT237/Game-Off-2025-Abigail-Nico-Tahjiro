@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5oqdf2lkk7ew"]
+[gd_scene load_steps=9 format=3 uid="uid://cia8bybivl8ix"]
 
-[ext_resource type="Script" uid="uid://d1p48vltm0gh3" path="res://Scripts/test_enemy_2.gd" id="1_nel0a"]
-[ext_resource type="Texture2D" uid="uid://d0l31mqs4egqk" path="res://Art/Crab Frame 1.png" id="2_y163i"]
-[ext_resource type="Texture2D" uid="uid://bap5ltkx7iyqi" path="res://Art/Crab Frame 3.png" id="3_aoo28"]
-[ext_resource type="Texture2D" uid="uid://bb0cf6nopoylt" path="res://Art/Crab Frame 2.png" id="4_iihy3"]
-[ext_resource type="Texture2D" uid="uid://crqttyjiau6me" path="res://Art/Crab Frame 4.png" id="5_ckrwe"]
+[ext_resource type="Script" uid="uid://c3u2orw2cqghw" path="res://grandma.gd" id="1_2jqt1"]
+[ext_resource type="Texture2D" uid="uid://bnd02go3jvhjd" path="res://Art/Old Lady Frame 1.png" id="2_2jqt1"]
+[ext_resource type="Texture2D" uid="uid://cv8i7gq7xs7oo" path="res://Art/Old Lady Frame 2.png" id="3_rwutg"]
+[ext_resource type="Texture2D" uid="uid://c0edcyhdyoikc" path="res://Art/Old Lady Frame 3.png" id="4_206fb"]
+[ext_resource type="Texture2D" uid="uid://bx3xul1vmwkep" path="res://Art/Old Lady Frame 4.png" id="5_8dgrr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y163i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y163i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_aoo28")
+"texture": ExtResource("2_2jqt1")
 }],
 "loop": true,
 "name": &"idle",
@@ -21,16 +18,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y163i")
+"texture": ExtResource("2_2jqt1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_iihy3")
+"texture": ExtResource("3_rwutg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_aoo28")
+"texture": ExtResource("4_206fb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ckrwe")
+"texture": ExtResource("5_8dgrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_206fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rwutg")
 }],
 "loop": true,
 "name": &"move",
@@ -43,13 +46,14 @@ size = Vector2(10, 10)
 [sub_resource type="CircleShape2D" id="CircleShape2D_yikbh"]
 radius = 85.02353
 
-[node name="TestEnemy2" type="CharacterBody2D"]
-script = ExtResource("1_nel0a")
+[node name="Grandma" type="CharacterBody2D"]
+script = ExtResource("1_2jqt1")
 
 [node name="TestEnemy2Sprite" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_y163i")
-animation = &"move"
+animation = &"idle"
+frame_progress = 0.4251152
 
 [node name="TestEnemy2BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yikbh")

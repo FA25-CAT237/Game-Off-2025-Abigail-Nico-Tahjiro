@@ -12,7 +12,9 @@ func _ready() -> void:
 		$WaveBannerSprite.texture = load("res://Art/wave4banner.png")
 	if(GameHandler.gameIsOver == true):
 		$WaveBannerSprite.texture = load("res://Art/gameoverbanner.png")
-	if(GameHandler.getWaveNumber() < 5):
+	if(GameHandler.getWaveNumber() + 1 >= 5):
+		GameHandler.gameFinished()
+	else:
 		moveBy()
 
 func moveBy() -> void:

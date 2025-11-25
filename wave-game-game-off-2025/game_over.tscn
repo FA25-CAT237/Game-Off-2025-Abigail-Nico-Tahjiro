@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwdlip20ffgnm"]
 
-[ext_resource type="Script" uid="uid://d37rqb75l46c0" path="res://game_over.gd" id="1_yxx3c"]
+[ext_resource type="Script" uid="uid://d37rqb75l46c0" path="res://Scripts/game_over.gd" id="1_yxx3c"]
 [ext_resource type="Texture2D" uid="uid://ekj6vcsmy2vg" path="res://Art/grass.png" id="2_ccer4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8u835"]

@@ -21,7 +21,7 @@ func startWave() -> void:
 		return
 	var i = 0
 	while (i) < get_tree().get_nodes_in_group("spawner").size():
-		get_tree().get_nodes_in_group("spawner")[i].spawnEnemies(wave * 2)
+		get_tree().get_nodes_in_group("spawner")[i].spawnEnemies(round(wave * 1.5))
 		i = i + 1
 	enemyCount = get_tree().get_nodes_in_group("enemy").size()
 
