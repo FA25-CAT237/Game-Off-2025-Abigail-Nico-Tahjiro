@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # Projectile Enemy targets the player, firing after every movement.
 
-@export var move_speed : float = 250 # how fast the enemy moves
+@export var move_speed : float = 150 # how fast the enemy moves
 
 @onready var player # reference to player character's position
 @onready var radio  # reference to radio's position
@@ -30,19 +30,20 @@ func _physics_process(delta: float) -> void:
 		movementGate = true
 		currentPosition = self.global_position
 	# move towards the player until a certain distance away from last currentPosition 
-	if(global_position.distance_to(currentPosition) < 75):
+	if(global_position.distance_to(currentPosition) < 50):
 		if global_position.distance_to(player.position) > 100:
 			moveTowardsPlayer()
 	else:
 		await get_tree().create_timer(2).timeout
 		movementGate = false
 	
-	if movementGate == true && attacking == false:
+	if movementGate == false && attacking == false:
 		attacking = true
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(3).timeout
 		# fire a projectile
 		var projectileInstance = projectileInstantiater.instantiate()
-		$"..".add_child(projectileInstance)
+		projectileInstance.position = position
+		get_tree().root.add_child(projectileInstance)
 		await get_tree().create_timer(1).timeout
 		attacking = false
 	
@@ -52,11 +53,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		$ProjEnemySprite.scale.x = 1
 	
-	# animate if moving
-	if velocity != Vector2(0, 0) && $ProjEnemySprite != null:
-		$ProjEnemySprite.play("move")
-	else: if($ProjEnemySprite != null):
-		$ProjEnemySprite.play("idle")
+	# animate
+	$ProjEnemySprite.play("idle")
 	
 	# check for collision
 	if $ProjEnemyArea.get_overlapping_areas().size() > 0 && colliderGate == false:
@@ -65,7 +63,7 @@ func _physics_process(delta: float) -> void:
 
 # moveTowardsPlayer makes the enemy move towards the player
 func moveTowardsPlayer() -> void:
-	if(global_position.distance_to(currentPosition) < 75):
+	if(global_position.distance_to(currentPosition) < 50):
 		# update velocity and then move_and_slide
 		velocity = global_position.direction_to(player.position) * move_speed
 		move_and_slide()

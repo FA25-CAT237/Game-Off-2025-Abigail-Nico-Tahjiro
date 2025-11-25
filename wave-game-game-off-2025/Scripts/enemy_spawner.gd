@@ -3,6 +3,7 @@ extends Node2D
 # preload all the enemy types
 var testEnemy
 var testEnemy2
+var projectileEnemy
 
 var enemySpawn
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	# preload all the enemy types
 	testEnemy = preload("res://test_enemy.tscn")
 	testEnemy2 = preload("res://test_enemy_2.tscn")
+	projectileEnemy = preload("res://projectile_enemy.tscn")
 	
 	basePosition = self.position
 	
@@ -33,11 +35,32 @@ func spawnEnemies(howMany: int):
 		# generate a number for what enemy will be spawned
 		enemySpawnChance = rng.randi_range(0, 100)
 		# randomly choose which enemies to spawn based on the wave
-		if enemySpawnChance <= 50:
-			var enemySpawn = testEnemy.instantiate()
-			add_child(enemySpawn)
-		else:
-			var enemySpawn = testEnemy2.instantiate()
-			add_child(enemySpawn)
+		if GameHandler.getWaveNumber() <= 2:
+			if enemySpawnChance <= 50:
+				var enemySpawn = testEnemy.instantiate()
+				add_child(enemySpawn)
+			else:
+				var enemySpawn = testEnemy2.instantiate()
+				add_child(enemySpawn)
+		if GameHandler.getWaveNumber() == 3:
+			if enemySpawnChance <= 40:
+				var enemySpawn = testEnemy.instantiate()
+				add_child(enemySpawn)
+			else: if enemySpawnChance  <= 80:
+				var enemySpawn = testEnemy2.instantiate()
+				add_child(enemySpawn)
+			else:
+				var enemySpawn = projectileEnemy.instantiate()
+				add_child(enemySpawn)
+		if GameHandler.getWaveNumber() == 4:
+			if enemySpawnChance <= 33:
+				var enemySpawn = testEnemy.instantiate()
+				add_child(enemySpawn)
+			else: if enemySpawnChance  <= 66:
+				var enemySpawn = testEnemy2.instantiate()
+				add_child(enemySpawn)
+			else:
+				var enemySpawn = projectileEnemy.instantiate()
+				add_child(enemySpawn)
 		self.position = basePosition
 	pass

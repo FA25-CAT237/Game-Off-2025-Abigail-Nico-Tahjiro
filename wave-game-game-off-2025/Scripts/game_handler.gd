@@ -15,8 +15,9 @@ var gameIsOver = false
 
 # function for starting a wave
 func startWave() -> void:
-	wave = wave + 1
-	if(wave == 5):
+	if(gameIsOver == false):
+		wave = wave + 1
+	if(wave == 5 && gameIsOver == false):
 		gameFinished()
 		return
 	var i = 0
@@ -59,7 +60,8 @@ func gameReset() -> void:
 
 # function for game won
 func gameFinished() -> void:
-	get_tree().change_scene_to_file("res://game_won.tscn")
+	if(gameIsOver == false):
+		get_tree().change_scene_to_file("res://game_won.tscn")
 
 # function for setting and returning enemy count
 func getEnemyCount() -> int:

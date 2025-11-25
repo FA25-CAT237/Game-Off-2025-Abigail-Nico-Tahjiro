@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5rqh"]
 radius = 92.0
-height = 292.0
+height = 404.0
 
 [node name="PlayerAttack" type="Node2D"]
 script = ExtResource("1_r8f3e")
